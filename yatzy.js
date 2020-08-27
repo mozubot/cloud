@@ -336,7 +336,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
                     yatzy[room].r = [];
                     choice1[msg].w = choice1[msg].p;
                     yatzy[room].player1.point = yatzy[room].player1.point + choice1[msg].p;
-                    replier.reply('Y를 선택하셨습니다');
+                    replier.reply('결정 완료!');
                 } else if (msg === 'n' || msg === 'N') {
                     yatzy[room].player1.pin2 = false;
                 }
