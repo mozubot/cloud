@@ -311,7 +311,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
                 ch: { n: 'Chance', p: sum(yatzy[room].r), w: yatzy[room].player1.ch },
                 '4k': { n: '4 of a kind', p: sum(yatzy[room].r), w: yatzy[room].player2['4card'] },
                 fh: { n: 'Full House', p: sum(yatzy[room].r), w: yatzy[room].player1.fh },
-                ss: { n: 'S. Straight', p: '15', w: yatzy[room].player1.ssz },
+                ss: { n: 'S. Straight', p: '15', w: yatzy[room].player1.ss },
                 ls: { n: 'L. Straight', p: '30', w: yatzy[room].player1.ls },
                 야추: { n: 'YACHT', p: '50', w: yatzy[room].player1.one },
             };
