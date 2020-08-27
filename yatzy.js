@@ -198,6 +198,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
                         yatzy[room].turns++;
                         yatzy[room].player1.turn = false;
                         yatzy[room].player1.pin1 = true;
+						yatzy[room].player1.pin3 = true;
                         roll(yatzy[room].r);
                         replier.reply(
                             yatzy[room].player1.name +
@@ -339,8 +340,15 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
                     replier.reply('결정 완료!');
                 } else if (msg === 'n' || msg === 'N') {
                     yatzy[room].player1.pin2 = false;
-                }
-            } //선택완료
+					replier.reply('결정을 취소하셨습니다\n족보를 다시 선택해주세요');
+                } //선택완료
+				if (yatzy[room].player1.pin3 === true) {
+				    if (msg.startsWith("고정 " ) || msg.startsWith("ㄱㅈ " )) {
+					    let lock = msg.substring(3).split(" ")
+						
+					}
+				}
+            } 
         } //player1
     } //방
     if (msg === '세이브') {
@@ -349,6 +357,10 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         replier.reply('세이브 완료');
         return;
     } //세이브
+	if (msg.startsWith("고정 " ) || msg.startsWith("ㄱㅈ " )) {
+		let lock = msg.substring(3).split(" ")
+		replier.reply(lock);
+	}					
     if (msg === '테스트') {
         z = roll(dice);
         replier.reply(z + '\n' + (small(z) ? '와!! 스몰스트라이크!' : '..'));
@@ -380,6 +392,12 @@ function roll(arr) {
         arr.push(a + 1);
     }
     return arr;
+}
+function reroll(arr) {
+    for(let i = 0; i < 5; i++) {
+        if(dices[i].lock) continue;
+        dices[i].val = ((Math.random() * 6);
+    }
 }
 function sum(arr) {
     return arr.map((e) => Number(e)).reduce((a, b) => (a += b), 0);
